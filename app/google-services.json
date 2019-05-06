@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "319542152921",
+    "firebase_url": "https://digicard-b907e.firebaseio.com",
+    "project_id": "digicard-b907e",
+    "storage_bucket": "digicard-b907e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319542152921:android:ca9931ff15a7b024",
+        "android_client_info": {
+          "package_name": "in.co.cfcs.digicard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319542152921-5q4v9ro3n9aht2kpcbvibvhl0v80pnfp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.co.cfcs.digicard",
+            "certificate_hash": "c009a583b04ebf45364e41f75148c0b2a9cc18d2"
+          }
+        },
+        {
+          "client_id": "319542152921-5307i2vuljntdqfoq1vatcujomg76r6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeLHkKrOEYTiFd6BkdzGWki9SXF3A4T2w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319542152921-5307i2vuljntdqfoq1vatcujomg76r6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
