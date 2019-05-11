@@ -36,5 +36,6 @@ dependencies {
     implementation project(':scanlibrary')
     implementation 'com.google.firebase:firebase-ml-vision:19.0.3'
     implementation 'com.google.firebase:firebase-core:16.0.8'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
 apply plugin: 'com.google.gms.google-services'

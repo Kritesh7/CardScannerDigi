@@ -77,6 +77,9 @@ class MainActivity : AppCompatActivity(), CardFragment.OnFragmentInteractionList
                         arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA),
                         REQUEST_WRITE_PERMISSION
                     )
+                }else{
+                    var preference: Int = 4
+                    startScan(preference)
                 }
 
 
@@ -185,6 +188,7 @@ class MainActivity : AppCompatActivity(), CardFragment.OnFragmentInteractionList
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val uri = data!!.extras!!.getParcelable<Uri>(ScanConstants.SCANNED_RESULT)
+            val selectedpath = data.extras.getString("selectedPath")
             var bitmap: Bitmap? = null
             val photo: Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
 
@@ -194,6 +198,7 @@ class MainActivity : AppCompatActivity(), CardFragment.OnFragmentInteractionList
 
             var i = Intent(this, ScannedActivity::class.java)
             i.putExtra("imageUri", uri.toString())
+            i.putExtra("selectedPath", selectedpath)
             startActivity(i)
 
         }

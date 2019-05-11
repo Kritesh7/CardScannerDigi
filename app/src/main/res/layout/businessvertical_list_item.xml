@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal" android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+<!--<CheckBox-->
+        <!--android:id="@+id/vertical_checkbox"-->
+        <!--android:buttonTint="@color/status_color"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+
+<!--/>-->
+
+
+    <com.google.android.material.chip.Chip android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:id="@+id/chip_add"
+                                           android:layout_marginTop="10dp"
+                                           android:clickable="true"
+                                           android:checkable="true" android:focusable="true">
+
+
+
+    </com.google.android.material.chip.Chip>
+
+</LinearLayout>

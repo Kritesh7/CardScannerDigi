@@ -5,7 +5,7 @@ import android.net.Uri;
 
 public interface IScanner {
 
-    void onBitmapSelect(Uri uri);
+    void onBitmapSelect(Uri uri, String selectedImagePath);
 
-    void onScanFinish(Uri uri);
+    void onScanFinish(Uri uri, String selectedPath);
 }

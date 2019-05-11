@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -126,6 +128,7 @@ public class PickImageFragment extends Fragment {
             cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, tempFileUri);
         }
         startActivityForResult(cameraIntent, ScanConstants.START_CAMERA_REQUEST_CODE);
+
     }
 
     private File createImageFile() {
@@ -138,11 +141,16 @@ public class PickImageFragment extends Fragment {
         return file;
     }
 
+    private String selectedImagePath;
+    ExifInterface  exifObject;
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("", "onActivityResult" + resultCode);
         Bitmap bitmap = null;
         if (resultCode == Activity.RESULT_OK) {
+//            Uri capturedImageUri = data.getData();
+            selectedImagePath = getRealPathFromURIPath(fileUri, getActivity());
             try {
                 switch (requestCode) {
                     case ScanConstants.START_CAMERA_REQUEST_CODE:
@@ -160,14 +168,27 @@ public class PickImageFragment extends Fragment {
             getActivity().finish();
         }
         if (bitmap != null) {
-            postImagePick(bitmap);
+            postImagePick(bitmap,selectedImagePath);
         }
     }
 
-    protected void postImagePick(Bitmap bitmap) {
+    private String getRealPathFromURIPath(Uri contentURI, Activity activity) {
+        Cursor cursor = activity.getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) {
+            return contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            return cursor.getString(idx);
+        }
+    }
+
+
+
+    protected void postImagePick(Bitmap bitmap, String selectedImagePath) {
         Uri uri = Utils.getUri(getActivity(), bitmap);
         bitmap.recycle();
-        scanner.onBitmapSelect(uri);
+        scanner.onBitmapSelect(uri,selectedImagePath);
     }
 
     private Bitmap getBitmap(Uri selectedimg) throws IOException {

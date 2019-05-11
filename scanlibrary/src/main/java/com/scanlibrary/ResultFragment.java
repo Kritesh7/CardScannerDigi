@@ -5,6 +5,9 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,6 +33,8 @@ public class ResultFragment extends Fragment {
     private Button bwButton;
     private Bitmap transformed;
     private static ProgressDialogFragment progressDialogFragment;
+    ExifInterface  exifObject;
+    String selectedPath;
 
     public ResultFragment() {
     }
@@ -52,15 +57,49 @@ public class ResultFragment extends Fragment {
         bwButton = (Button) view.findViewById(R.id.BWMode);
         bwButton.setOnClickListener(new BWButtonClickListener());
         Bitmap bitmap = getBitmap();
+
         setScannedImage(bitmap);
+
         doneButton = (Button) view.findViewById(R.id.doneButton);
         doneButton.setOnClickListener(new DoneButtonClickListener());
+        showProgressDialog(getResources().getString(R.string.loading));
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Intent data = new Intent();
+                    Bitmap bitmap = transformed;
+                    if (bitmap == null) {
+                        bitmap = original;
+                    }
+                    Uri uri = Utils.getUri(getActivity(), bitmap);
+                    data.putExtra(ScanConstants.SCANNED_RESULT, uri);
+                    data.putExtra("selectedPath",selectedPath);
+                    getActivity().setResult(Activity.RESULT_OK, data);
+                    original.recycle();
+                    System.gc();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                           dismissDialog();
+                            getActivity().finish();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
+
 
     private Bitmap getBitmap() {
         Uri uri = getUri();
         try {
             original = Utils.getBitmap(getActivity(), uri);
+            int width = original.getWidth();
+            int height = original.getHeight();
             getActivity().getContentResolver().delete(uri, null, null);
             return original;
         } catch (IOException e) {
@@ -71,6 +110,7 @@ public class ResultFragment extends Fragment {
 
     private Uri getUri() {
         Uri uri = getArguments().getParcelable(ScanConstants.SCANNED_RESULT);
+        selectedPath = getArguments().getString("SelectedPath");
         return uri;
     }
 
@@ -81,6 +121,7 @@ public class ResultFragment extends Fragment {
     private class DoneButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+
             showProgressDialog(getResources().getString(R.string.loading));
             AsyncTask.execute(new Runnable() {
                 @Override
@@ -110,6 +151,7 @@ public class ResultFragment extends Fragment {
             });
         }
     }
+
 
     private class BWButtonClickListener implements View.OnClickListener {
         @Override

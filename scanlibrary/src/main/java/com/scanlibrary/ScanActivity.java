@@ -11,6 +11,9 @@ import android.os.Bundle;
 
 public class ScanActivity extends Activity implements IScanner, ComponentCallbacks2 {
 
+    private Bitmap original;
+    private Bitmap transformed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,11 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     }
 
     @Override
-    public void onBitmapSelect(Uri uri) {
+    public void onBitmapSelect(Uri uri, String selectedImagePath) {
         ScanFragment fragment = new ScanFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(ScanConstants.SELECTED_BITMAP, uri);
+        bundle.putString("SelectedPath",selectedImagePath);
         fragment.setArguments(bundle);
         android.app.FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -47,10 +51,11 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     }
 
     @Override
-    public void onScanFinish(Uri uri) {
+    public void onScanFinish(Uri uri, String selectedPath) {
         ResultFragment fragment = new ResultFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable(ScanConstants.SCANNED_RESULT, uri);
+        bundle.putString("SelectedPath",selectedPath);
         fragment.setArguments(bundle);
         android.app.FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -58,6 +63,9 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
         fragmentTransaction.addToBackStack(ResultFragment.class.toString());
         fragmentTransaction.commit();
     }
+
+
+
 
     @Override
     public void onTrimMemory(int level) {

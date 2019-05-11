@@ -21,7 +21,6 @@
                 android:contentDescription="Scanned Image"/>
 
 
-
         <androidx.core.widget.NestedScrollView
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 tools:showIn="@layout/activity_card_detail"
@@ -35,31 +34,41 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/lightGray">
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="#FFFFFF">
-
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Name"
-                android:textSize="12sp"
-                android:textColor="@color/colorPrimary"
-                          android:textStyle="bold"/>
-
-                <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:id="@+id/txt_name"/>
-
-                <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/name_chip_group"
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:singleSelection="true">
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:background="#FFFFFF">
 
-                </com.google.android.material.chip.ChipGroup>
-            </LinearLayout>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Name"
+                              android:textSize="12sp"
+                              android:textColor="@color/colorPrimary"
+                              android:textStyle="bold"/>
+
+                    <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textSize="12sp"
+                              android:id="@+id/txt_name"/>
+
+                    <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/name_chip_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:singleSelection="true">
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:text="Designation"
+                              android:textSize="12sp"
+                              android:textColor="@color/colorPrimary"
+                              android:textStyle="bold"/>
+
+                    <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:textSize="12sp"
+                              android:id="@+id/txt_degination"/>
+                </LinearLayout>
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -71,29 +80,30 @@
 
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                                  android:orientation="vertical"
+                                  android:id="@+id/ll_header_mobile">
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:text="Tel"
-                                  android:textSize="12sp"
-                                  android:textColor="@color/colorPrimary"
-                                  android:textStyle="bold"/>
+                        <!--<TextView android:layout_width="0dp" android:layout_height="wrap_content"-->
+                        <!--android:text="Tel"-->
+                        <!--android:textSize="12sp"-->
+                        <!--android:textColor="@color/colorPrimary"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:layout_weight="7"/>-->
+
+                        <!--<ImageView android:layout_width="0dp" android:layout_height="20dp"-->
+                        <!--android:layout_weight="3"-->
+                        <!--android:src="@drawable/ic_add_circle"-->
+                        <!--android:paddingStart="80dp"-->
+                        <!--android:contentDescription="Add Mobile Filed"-->
+                        <!--android:id="@+id/btn_add_mobile_filed"/>-->
 
                     </LinearLayout>
 
 
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
-                                  android:orientation="horizontal">
-
-                        <Spinner android:layout_width="0dp" android:layout_height="wrap_content"
-                                 android:layout_weight="2"
-                                 android:layout_gravity="center"/>
-
-                        <EditText android:layout_width="0dp" android:layout_height="wrap_content"
-                                  android:textSize="12sp"
-                                  android:layout_weight="8"
-                                  android:id="@+id/txt_mobile"/>
+                                  android:orientation="vertical"
+                                  android:id="@+id/ll_tel_numbers">
 
 
                     </LinearLayout>
@@ -107,39 +117,25 @@
                         android:orientation="vertical"
                         android:padding="16dp"
                         android:background="#FFFFFF"
-                android:layout_marginTop="5dp">
+                        android:layout_marginTop="5dp">
 
 
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
-                                  android:orientation="horizontal">
+                                  android:orientation="vertical"
+                                  android:id="@+id/ll_header_email">
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:text="Email"
-                                  android:textSize="12sp"
-                                  android:textColor="@color/colorPrimary"
-                                  android:textStyle="bold"/>
 
                     </LinearLayout>
 
 
                     <LinearLayout android:layout_width="match_parent"
                                   android:layout_height="wrap_content"
-                                  android:orientation="horizontal">
-
-                        <Spinner android:layout_width="0dp" android:layout_height="wrap_content"
-                                 android:layout_weight="2"
-                                 android:layout_gravity="center"/>
-
-                        <EditText android:layout_width="0dp" android:layout_height="wrap_content"
-                                  android:textSize="12sp"
-                                  android:layout_weight="8"
-                        android:id="@+id/txt_email"/>
+                                  android:orientation="vertical"
+                                  android:id="@+id/ll_emails">
 
 
                     </LinearLayout>
-
-
 
 
                 </LinearLayout>
@@ -152,7 +148,6 @@
                         android:padding="16dp"
                         android:background="#FFFFFF"
                         android:layout_marginTop="5dp">
-
 
 
                     <LinearLayout android:layout_width="match_parent"
@@ -178,12 +173,10 @@
                         <EditText android:layout_width="0dp" android:layout_height="wrap_content"
                                   android:textSize="12sp"
                                   android:layout_weight="8"
-                        android:id="@+id/txt_company"/>
+                                  android:id="@+id/txt_company"/>
 
 
                     </LinearLayout>
-
-
 
 
                 </LinearLayout>
@@ -196,36 +189,6 @@
                         android:padding="16dp"
                         android:background="#FFFFFF"
                         android:layout_marginTop="5dp">
-
-
-
-                    <LinearLayout android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:orientation="horizontal">
-
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                  android:text="Company"
-                                  android:textSize="12sp"
-                                  android:textColor="@color/colorPrimary"
-                                  android:textStyle="bold"/>
-                    </LinearLayout>
-
-
-                    <LinearLayout android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:orientation="horizontal">
-
-                        <Spinner android:layout_width="0dp" android:layout_height="wrap_content"
-                                 android:layout_weight="2"
-                                 android:layout_gravity="center"/>
-
-                        <EditText android:layout_width="0dp" android:layout_height="wrap_content"
-                                  android:textSize="12sp"
-                                  android:layout_weight="8"
-                        android:id="@+id/txt_degination"/>
-
-
-                    </LinearLayout>
 
 
                     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -236,7 +199,7 @@
 
                     <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:textSize="12sp"
-                   android:id="@+id/txt_website" />
+                              android:id="@+id/txt_website"/>
 
                 </LinearLayout>
 
@@ -256,7 +219,208 @@
 
                     <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
                               android:textSize="12sp"
-                    android:id="@+id/txt_address"/>
+                              android:id="@+id/txt_address"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="vertical"
+                              android:background="#FFFFFF">
+
+
+                    <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="10dp"
+                            app:cardElevation="10dp"
+                            app:cardCornerRadius="20dp"
+                            android:layout_margin="10dp">
+
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                                      android:orientation="vertical"
+                                      android:layout_margin="10dp">
+
+                            <LinearLayout android:layout_width="match_parent"
+                                          android:layout_height="wrap_content"
+                                          android:orientation="vertical">
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Contact Other Detail"
+                                android:textSize="15dp"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"/>
+
+                                <View android:layout_width="match_parent" android:layout_height="1dp"
+                                android:background="@color/colorPrimary"/>
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:text="Contact type"
+                                          android:textSize="12sp"
+                                          android:textColor="@color/colorPrimary"
+                                          android:textStyle="bold"
+                                android:layout_marginTop="10dp"
+                                />
+
+
+                                <Spinner android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                         android:gravity="center_vertical"
+                                         android:popupBackground="#fff"
+                                         android:textSize="15sp"
+                                         android:background="@drawable/spinner_back"
+                                         android:id="@+id/spinner_contact_type"/>
+
+
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                          android:text="Management Type"
+                                          android:textSize="12sp"
+                                          android:textColor="@color/colorPrimary"
+                                          android:textStyle="bold"
+                                          android:layout_marginTop="10dp"/>
+
+
+                                <Spinner android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                         android:layout_marginTop="5dp"
+                                         android:gravity="center_vertical"
+                                         android:popupBackground="#fff"
+                                         android:textSize="15sp"
+                                         android:background="@drawable/spinner_back"
+                                         android:id="@+id/spinner_management_type"/>
+
+
+                                    <LinearLayout android:layout_width="match_parent"
+                                                  android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                                  android:layout_marginTop="10dp">
+
+                                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                                  android:text="Business Vertical"
+                                                  android:textSize="15sp"
+                                                  android:textColor="@color/colorPrimary"
+                                                  android:textStyle="bold"
+                                                 android:layout_weight="7"
+                                        />
+
+                                        <ImageView android:layout_width="0dp"  android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:src="@drawable/ic_add_circle"
+                                        android:contentDescription="Add Business Vertical"
+                                        android:paddingStart="60dp"
+                                        android:id="@+id/btn_business_vertical"/>
+
+                                    </LinearLayout>
+
+
+                                <com.google.android.material.chip.ChipGroup android:layout_width="match_parent"
+                                                                            android:layout_height="wrap_content"
+                                android:id="@+id/Chip_group_business_vertical">
+
+
+                                </com.google.android.material.chip.ChipGroup>
+
+
+                                <LinearLayout android:layout_width="match_parent"
+                                              android:layout_height="wrap_content"
+                                              android:orientation="horizontal"
+                                              android:layout_marginTop="10dp">
+
+                                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                              android:text="Industry Segment"
+                                              android:textSize="15sp"
+                                              android:textColor="@color/colorPrimary"
+                                              android:textStyle="bold"
+                                              android:layout_weight="7"/>
+
+                                    <ImageView android:layout_width="0dp"  android:layout_height="wrap_content"
+                                               android:layout_weight="3"
+                                               android:src="@drawable/ic_add_circle"
+                                               android:contentDescription="Add Industry Segment"
+                                               android:paddingStart="60dp"/>
+
+                                </LinearLayout>
+
+
+                                <com.google.android.material.chip.ChipGroup android:layout_width="match_parent"
+                                                                            android:layout_height="wrap_content"
+                                                                            android:id="@+id/Chip_group_industry_segment">
+
+
+                                </com.google.android.material.chip.ChipGroup>
+
+
+                                <LinearLayout android:layout_width="match_parent"
+                                              android:layout_height="wrap_content"
+                                              android:orientation="horizontal"
+                                              android:layout_marginTop="10dp">
+
+                                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                              android:text="Industry Type"
+                                              android:textSize="15sp"
+                                              android:textColor="@color/colorPrimary"
+                                              android:textStyle="bold"
+                                              android:layout_weight="7"
+                                    />
+
+                                    <ImageView android:layout_width="0dp"  android:layout_height="wrap_content"
+                                               android:layout_weight="3"
+                                               android:src="@drawable/ic_add_circle"
+                                               android:contentDescription="Add Industry Type"
+                                               android:paddingStart="60dp"
+                                    android:id="@+id/btn_industry_type"/>
+
+                                </LinearLayout>
+
+
+                                <com.google.android.material.chip.ChipGroup android:layout_width="match_parent"
+                                                                            android:layout_height="wrap_content"
+                                                                            android:id="@+id/Chip_group_industry_type">
+
+
+                                </com.google.android.material.chip.ChipGroup>
+
+
+
+                                <LinearLayout android:layout_width="match_parent"
+                                              android:layout_height="wrap_content"
+                                              android:orientation="horizontal"
+                                              android:layout_marginTop="10dp">
+
+                                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                                              android:text="Principle Type"
+                                              android:textSize="15sp"
+                                              android:textColor="@color/colorPrimary"
+                                              android:textStyle="bold"
+                                              android:layout_weight="7"/>
+
+                                    <ImageView android:layout_width="0dp"  android:layout_height="wrap_content"
+                                               android:layout_weight="3"
+                                               android:src="@drawable/ic_add_circle"
+                                               android:contentDescription="Add Principle Type"
+                                               android:paddingStart="60dp"
+                                               android:id="@+id/btn_principle_type"/>
+
+                                </LinearLayout>
+
+
+                                <com.google.android.material.chip.ChipGroup android:layout_width="match_parent"
+                                                                            android:layout_height="wrap_content"
+                                                                            android:id="@+id/Chip_group_principle_type">
+
+
+                                </com.google.android.material.chip.ChipGroup>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
 
                 </LinearLayout>
 

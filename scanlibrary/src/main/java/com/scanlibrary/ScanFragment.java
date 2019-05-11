@@ -37,6 +37,7 @@ public class ScanFragment extends Fragment {
     private ProgressDialogFragment progressDialogFragment;
     private IScanner scanner;
     private Bitmap original;
+    String selectedPath;
 
     @Override
     public void onAttach(Activity activity) {
@@ -89,6 +90,7 @@ public class ScanFragment extends Fragment {
 
     private Uri getUri() {
         Uri uri = getArguments().getParcelable(ScanConstants.SELECTED_BITMAP);
+         selectedPath = getArguments().getString("SelectedPath");
         return uri;
     }
 
@@ -213,7 +215,7 @@ public class ScanFragment extends Fragment {
         protected Bitmap doInBackground(Void... params) {
             Bitmap bitmap =  getScannedBitmap(original, points);
             Uri uri = Utils.getUri(getActivity(), bitmap);
-            scanner.onScanFinish(uri);
+            scanner.onScanFinish(uri,selectedPath);
             return bitmap;
         }
 
